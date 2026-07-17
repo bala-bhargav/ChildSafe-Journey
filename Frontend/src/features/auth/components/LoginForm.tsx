@@ -3,7 +3,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useLogin } from '../hooks/useLogin';
 import { loginSchema } from '../schemas/login.schema';
 import { LoginRequest } from '../types';
-import { Loader2 } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { FormField } from '@/components/ui/FormField';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { Link } from '@/components/ui/Link';
 
 export const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginRequest>({
@@ -17,64 +20,46 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="login-card__form" onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email" className="label-field">Email or User ID</label>
-        <input
-          id="email"
-          type="text"
-          autoComplete="email"
-          placeholder="name@school.edu"
-          className={`input-field${errors.email ? ' input-field-error' : ''}`}
-          {...register('email')}
+    <form className="w-full max-w-sm space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <div className="space-y-4">
+        <FormField 
+          label="Email or User ID" 
+          {...register('email')} 
+          error={errors.email?.message} 
         />
-        {errors.email && (
-          <p className="error-message" role="alert">{errors.email.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="password" className="label-field">Password</label>
-        <input
-          id="password"
+        
+        <FormField 
+          label="Password" 
           type="password"
-          autoComplete="current-password"
-          placeholder="Enter your password"
-          className={`input-field${errors.password ? ' input-field-error' : ''}`}
-          {...register('password')}
+          {...register('password')} 
+          error={errors.password?.message} 
         />
-        {errors.password && (
-          <p className="error-message" role="alert">{errors.password.message}</p>
-        )}
       </div>
-
-      <div className="login-card__form-row">
-        <label className="login-card__remember">
-          <input type="checkbox" {...register('remember')} />
-          <span>Remember me</span>
+      
+      <div className="flex items-center justify-between">
+        <label className="flex items-center space-x-2 text-sm">
+          <Checkbox id="remember" {...register('remember')} />
+          <span className="text-muted-foreground">Remember me</span>
         </label>
-        <a href="/forgot-password" className="link-text">Forgot password?</a>
+        
+        <Link href="/forgot-password" className="text-sm text-primary hover:underline">
+          Forgot password?
+        </Link>
       </div>
-
-      <button
-        type="submit"
-        className="btn-primary"
-        disabled={mutation.isPending}
+      
+      <Button 
+        type="submit" 
+        className="w-full"
+        loading={mutation.isPending}
+        shimmer={mutation.isPending}
       >
-        {mutation.isPending ? (
-          <>
-            <Loader2 className="btn-primary__spinner" />
-            Signing in...
-          </>
-        ) : (
-          'Sign in'
-        )}
-      </button>
-
+        Sign in
+      </Button>
+      
       {mutation.isError && (
-        <p className="error-message login-card__error" role="alert">
-          {mutation.error.message}
-        </p>
+        <div className="text-center">
+          <p className="text-sm text-red-500">{mutation.error.message}</p>
+        </div>
       )}
     </form>
   );
