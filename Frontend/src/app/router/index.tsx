@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: ROUTES.REGISTER,
+    element: <Navigate to={ROUTES.LOGIN} replace />,
+  },
+  {
     path: ROUTES.FORGOT_PASSWORD,
     element: <Navigate to={ROUTES.LOGIN} replace />,
   },

@@ -2,6 +2,7 @@ export const APP_NAME = 'ChildSafe Journey';
 export const APP_TAGLINE = 'Secure Student Transportation';
 export const ROUTES = {
   LOGIN: '/login',
+  REGISTER: '/register',
   FORGOT_PASSWORD: '/forgot-password',
   DASHBOARD: '/dashboard', // Reserved for future
 };

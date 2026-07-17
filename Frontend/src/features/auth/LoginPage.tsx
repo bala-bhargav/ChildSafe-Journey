@@ -1,6 +1,7 @@
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { LoginForm } from './components/LoginForm';
-import { APP_NAME, APP_TAGLINE } from '@/constants/app.constants';
+import { Card, CardContent } from '@/components/ui/Card';
+import { APP_NAME, APP_TAGLINE, ROUTES } from '@/constants/app.constants';
 
 export const LoginPage = () => {
   return (
@@ -21,7 +22,18 @@ export const LoginPage = () => {
         <h2 className="text-3xl font-bold text-foreground mb-2">{APP_NAME}</h2>
         <p className="text-muted-foreground mb-8">{APP_TAGLINE}</p>
         
-        <LoginForm />
+        <Card className="w-full glass-card">
+          <CardContent className="p-6">
+            <LoginForm />
+            
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Don&apos;t have an account?{' '}
+              <a href={ROUTES.REGISTER} className="text-primary font-medium hover:underline">
+                Sign up
+              </a>
+            </p>
+          </CardContent>
+        </Card>
         
         <a href="/forgot-password" className="mt-6 text-sm text-primary hover:underline">
           Forgot password?
