@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { LoginPage } from '@/pages/auth/LoginPage';
+import { RegisterPage } from '@/pages/auth/RegisterPage';
 import { ROUTES } from '@/constants/app.constants';
 
 export const router = createBrowserRouter([
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
   },
   {
     path: ROUTES.REGISTER,
-    element: <Navigate to={ROUTES.LOGIN} replace />,
+    element: <RegisterPage />,
   },
   {
     path: ROUTES.FORGOT_PASSWORD,

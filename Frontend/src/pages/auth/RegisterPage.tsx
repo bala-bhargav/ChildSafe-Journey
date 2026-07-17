@@ -1,2 +1,1 @@
-export { LoginPage } from '@/features/auth/LoginPage';
 export { RegisterPage } from '@/features/auth/RegisterPage';
