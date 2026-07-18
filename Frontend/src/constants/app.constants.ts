@@ -9,4 +9,5 @@ export const ROUTES = {
 export const STORAGE_KEYS = {
   REMEMBER_EMAIL: 'csj_remember_email',
   AUTH_TOKEN: 'csj_auth_token',
+  AUTH_USER: 'csj_auth_user',
 };

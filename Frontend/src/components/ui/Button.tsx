@@ -28,7 +28,6 @@ const buttonVariants = cva(
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   loading?: boolean;
-  shimmer?: boolean;
 }
 
 export const Button = ({
@@ -36,7 +35,6 @@ export const Button = ({
   variant,
   size,
   loading,
-  shimmer,
   children,
   disabled,
   ...props

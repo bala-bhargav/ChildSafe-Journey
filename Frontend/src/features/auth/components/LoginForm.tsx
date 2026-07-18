@@ -51,7 +51,6 @@ export const LoginForm = () => {
         type="submit" 
         className="w-full"
         loading={mutation.isPending}
-        shimmer={mutation.isPending}
       >
         Sign in
       </Button>

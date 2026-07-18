@@ -1,6 +1,6 @@
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { AuthForm } from './components/AuthForm';
-import { Card, CardContent } from '@/components/ui/Card';
+import { Card, CardContent } from '@/components/ui/primitives/Card';
 import { APP_NAME, APP_TAGLINE } from '@/constants/app.constants';
 
 export const AuthPage = () => {

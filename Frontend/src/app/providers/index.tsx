@@ -1,13 +1,19 @@
-import { ReactNode } from 'react';
 import { QueryProvider } from './QueryProvider';
-import { ThemeProvider } from './ThemeProvider';
+import { AuthProvider } from '@/context/AuthContext';
+import { Toaster } from '@/components/ui/feedback/Toast';
+import { useToast } from '@/components/ui/feedback/useToast';
+import { ReactNode } from 'react';
 
-export const AppProviders = ({ children }: { children: ReactNode }) => {
-  return (
-    <ThemeProvider>
-      <QueryProvider>
-        {children}
-      </QueryProvider>
-    </ThemeProvider>
-  );
-};
+export { QueryProvider };
+export { AuthProvider };
+export { Toaster };
+export { useToast };
+
+export const AppProvidersInner = ({ children }: { children: ReactNode }) => (
+  <QueryProvider>
+    <AuthProvider>
+      {children}
+      <Toaster />
+    </AuthProvider>
+  </QueryProvider>
+);
